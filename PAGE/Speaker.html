@@ -15,17 +15,18 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark header fixed-top">
-        <div class="container-fluid">
-            <img src="../img/logo-small.png" style="margin-right: 5px;" alt="Educational_Tour">
-            <a class="navbar-brand montserrat-alternates-extrabold" href="#">BSCS Educational Tour</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light header fixed-top d-flex justify-content-between">
+        <div class="container-fluid" style="background-color: #9558ffa9 !important;">
+            <div class="d-flex align-items-center">
+                <img src="../img/logo-small.png" style="margin-right: 5px;" alt="Educational_Tour">
+                <a class="navbar-brand montserrat-alternates-extrabold" href="#">BSCS Educational Tour</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navie"
+                aria-controls="navie" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="offcanvas offcanvas-end" style="background-color: #9658FF !important;" tabindex="-1"
-                id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <ul class="navbar-nav justify-content-end">
+            <div class="collapse navbar-collapse f-end" id="navie">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="montserrat-alternates-regular nav-link" href="../index.html">Home</a>
                     </li>
@@ -42,6 +43,7 @@
             </div>
         </div>
     </nav>
+
     <div class="landing-page">
         <a class="landing-text montserrat-alternates-extrabold">Speaker</a>
     </div>
@@ -184,6 +186,50 @@
             </div>
         </div>
     </div>
+    <script src="../bootstrap/jquery-3.7.1/jquery.min.js"></script>
+    <script src="../bootstrap/js/popper.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var navbarToggler = document.querySelector('.navbar-toggler');
+            var navCollapse = document.getElementById('navie');
+    
+            // Handle click outside of navbar to close it
+            document.addEventListener('click', function(event) {
+                var isClickInsideNav = navCollapse.contains(event.target);
+                var isClickInsideToggler = navbarToggler.contains(event.target);
+    
+                if (!isClickInsideNav && !isClickInsideToggler) {
+                    var bsCollapse = new bootstrap.Collapse(navCollapse, {
+                        toggle: false
+                    });
+                    bsCollapse.hide();
+                    navbarToggler.setAttribute('aria-expanded', 'false');
+                }
+            });
+    
+            // Handle navbar toggler button click
+            navbarToggler.addEventListener('click', function() {
+                var isExpanded = navbarToggler.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    var bsCollapse = new bootstrap.Collapse(navCollapse, {
+                        toggle: false
+                    });
+                    bsCollapse.hide();
+                    navbarToggler.setAttribute('aria-expanded', 'false');
+                } else {
+                    var bsCollapse = new bootstrap.Collapse(navCollapse, {
+                        toggle: false
+                    });
+                    bsCollapse.show();
+                    navbarToggler.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

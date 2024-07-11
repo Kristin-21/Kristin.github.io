@@ -199,6 +199,12 @@ p {
         justify-content: center !important;
     }
 }
+@media screen and (min-width: 1024px) {
+    .f-end {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
 
 .reflection-p {
     color: #b180ff;
